@@ -1,2 +1,23 @@
-<h3>Este es mi root</h3>
-<app-header></app-header>
+<!-- si no necesito texto entre los component tags puedo poner solo 1 tag que se cierre-->
+<!-- <app-header></app-header> -->
+<app-header /> 
+
+<main>
+    <ul id="users">
+        <li>                                                                                                     
+            <app-user [id]="users[0].id" [avatar]="users[0].avatar" [name]="users[0].name" (select)="onSelectUser($event)"/>
+        </li>
+        <li>
+            <app-user [id]="users[1].id" [avatar]="users[1].avatar" [name]="users[1].name" (select)="onSelectUser($event)"/>
+        </li>
+        <li>
+            <app-user [id]="users[2].id" [avatar]="users[2].avatar" [name]="users[2].name" (select)="onSelectUser($event)"/>
+        </li>
+        <li>
+            <app-user [id]="users[3].id" [avatar]="users[3].avatar" [name]="users[3].name" (select)="onSelectUser($event)"/>
+        </li>
+    </ul>
+
+                            <!-- el "?" hace q si el obj no existe no muestre nada -->
+    <app-tasks [name]="selectedUser?.name"/> 
+</main>
