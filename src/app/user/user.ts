@@ -1,5 +1,11 @@
 import { Component, EventEmitter, Input, output, Output} from '@angular/core';
 
+interface UserObject {
+    id: string;
+    name: string;
+    avatar: string;
+}   
+
 @Component({
   selector: 'app-user',
   imports: [],
@@ -11,17 +17,20 @@ export class User {
   // "required: true" hace que me obligue a poner avatar y name en el frontend
   // @Input() name!: string; //este input seria opcional 
 
-  @Input({required: true}) avatar!: string;
-  @Input({required: true}) name!: string;
-  @Input({required: true}) id!: string;
+  // @Input({required: true}) avatar!: string;
+  // @Input({required: true}) name!: string;
+  // @Input({required: true}) id!: string;
+
+  @Input({required: true}) user!: UserObject;
+
   @Output() select = new EventEmitter<string>();
 
   get imagePath() {
-    return 'users/' + this.avatar;
+    return 'users/' + this.user?.avatar;
   }
 
   onSelectUser(){
-    this.select.emit(this.id);
+    this.select.emit(this.user?.id);
   }
 
 
