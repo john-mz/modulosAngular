@@ -6,10 +6,14 @@
         </menu>
     </header>
 
-    <ul>
-        <li><app-task/></li>
-        <li><app-task/></li>
-        <li><app-task/></li>
-    </ul>
+    @if (selectedUserTasks) {
+        <ul>
+            @for (ts of selectedUserTasks; track ts.id) {
+                <app-task [taskName]="ts.title" [time]="ts.dueDate" [summary]="ts.summary"></app-task>
+            }
+        </ul>
+    } @else {
+        <p>no existe specifictask</p>
+    }
 </section>
 
