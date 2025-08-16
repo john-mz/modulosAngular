@@ -9,7 +9,7 @@
     @if (selectedUserTasks) {
         <ul>
             @for (ts of selectedUserTasks; track ts.id) {
-                <app-task [taskName]="ts.title" [time]="ts.dueDate" [summary]="ts.summary"></app-task>
+                <app-task [task]="ts"></app-task>
             }
         </ul>
     } @else {

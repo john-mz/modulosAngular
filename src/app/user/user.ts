@@ -1,10 +1,6 @@
-import { Component, EventEmitter, Input, output, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output} from '@angular/core';
 
-interface UserObject {
-    id: string;
-    name: string;
-    avatar: string;
-}   
+import { UserInterface } from './user.model';
 
 @Component({
   selector: 'app-user',
@@ -12,6 +8,7 @@ interface UserObject {
   templateUrl: './user.html',
   styleUrl: './user.css'
 })
+
 export class User {
   // "!" means we know it'll have a value
   // "required: true" hace que me obligue a poner avatar y name en el frontend
@@ -21,7 +18,7 @@ export class User {
   // @Input({required: true}) name!: string;
   // @Input({required: true}) id!: string;
 
-  @Input({required: true}) user!: UserObject;
+  @Input({required: true}) user!: UserInterface;
 
   @Output() select = new EventEmitter<string>();
 
