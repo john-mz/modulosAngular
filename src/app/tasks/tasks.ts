@@ -50,4 +50,8 @@ export class Tasks {
     this.isAddingTask = true;
   }
 
+  onSelectClose(status: boolean){
+    this.isAddingTask = false;
+  }
+
 }
