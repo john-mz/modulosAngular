@@ -10,12 +10,10 @@ import { TaskInterface } from './task.model';
 })
 export class Task {
   @Input({required: true}) task!: TaskInterface; 
-            //complete
-  @Output() completed = new EventEmitter<string>();
+  @Output() complete = new EventEmitter<string>();
 
-  //onCompleteTask
-  completeTask(){
-    this.completed.emit(this.task.id);
+  onCompleteTask(){
+    this.complete.emit(this.task.id);
   }
   
 }
