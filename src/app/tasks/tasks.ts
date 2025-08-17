@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Task } from './task/task';
 import { NewTask } from './new-task/new-task';
+import { NewTaskData } from './task/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -10,7 +11,7 @@ import { NewTask } from './new-task/new-task';
 })
 export class Tasks {
   @Input({required: true}) name?: string;
-  @Input({required: true}) userId?: string; //user
+  @Input({required: true}) userId!: string; //user
   isAddingTask = false;
   tasks = [
   {
@@ -36,7 +37,7 @@ export class Tasks {
       'Prepare and describe an issue template which will help with project management',
     dueDate: '2024-06-15',
   },
-]
+];
 
   get selectedUserTasks() {
     return this.tasks.filter(task => task.userId === this.userId);
@@ -51,6 +52,17 @@ export class Tasks {
   }
 
   onCancelAddTask(){
+    this.isAddingTask = false;
+  }
+
+  onAddTask(taskData: NewTaskData){
+    this.tasks.unshift({
+      id: new Date().getTime().toString(),
+      userId: this.userId,
+      title: taskData.title,
+      summary: taskData.summary,
+      dueDate: taskData.date
+    });
     this.isAddingTask = false;
   }
 
