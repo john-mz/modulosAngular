@@ -50,7 +50,7 @@ export class Tasks {
     this.isAddingTask = true;
   }
 
-  onSelectClose(status: boolean){
+  onCancelAddTask(){
     this.isAddingTask = false;
   }
 

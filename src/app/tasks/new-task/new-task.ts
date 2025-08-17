@@ -1,15 +1,29 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-new-task',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './new-task.html',
   styleUrl: './new-task.css'
 })
 export class NewTask {
-  @Output() close = new EventEmitter<boolean>();
+  @Output() cancel = new EventEmitter<void>();
+  // @Output() formulario = new EventEmitter<{}>();
+  enteredTitle = "";
+  enteredSummary = "";
+  enteredDate = "";
 
-  onSelectClose(){
-    this.close.emit(false);
+  // using signal
+  // enteredTitle = signal("");
+  // enteredSummary = signal("");
+  // enteredDate = signal("");
+
+  onCancel(){
+    this.cancel.emit();
+  }
+
+  onSubmit(){
+    console.log("submit btn was pressed");
   }
 }
